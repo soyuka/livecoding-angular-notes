@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+  <title>Notes</title>
+  <meta charset="utf-8"/>
+  <link href="./client/css/app.css" rel="stylesheet"/></head>
+  <body ng-app="notes" ng-controller="notesCtrl">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">Notes</a></h1>
+        </li>
+      </ul>
+    </nav>
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>Preview</h2>
+        <div marked="note.text"></div>
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-10 columns">
+        <form ng-submit="createOrUpdate()">
+          <div class="row">
+            <div class="large-12 columns">
+              <label>Title
+                <input type="text" ng-model="note.title" />
+              </label>
+              <label>Note
+                <textarea ng-model="note.text"></textarea>
+              </label>
+              <button type="submit">Send</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="columns large-2">
+        <ul>
+          <li ng-repeat="n in notes">
+            <a href="#" ng-click="update(n.index)">{{n.index + ' ' + n.title}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script type="text/javascript" src="./build/vendor.js"></script>
+    <script type="text/javascript" src="./build/main.js"></script>
+  </body>
+</html>

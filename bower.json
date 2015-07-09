@@ -1,0 +1,27 @@
+{
+  "name": "notes",
+  "version": "0.0.0",
+  "authors": [
+    "soyuka <soyuka@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.2",
+    "angular": "~1.4.2",
+    "angular-marked": "Hypercubed/angular-marked#~0.0.17",
+    "highlightjs": "~8.6.0",
+    "angular-local-storage": "~0.2.2"
+  },
+  "overrides": {
+    "foundation": {
+      "ignore": true
+    }
+  }
+}

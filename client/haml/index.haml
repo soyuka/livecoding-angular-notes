@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title Notes
+    %meta{charset: 'utf-8'}
+    %link{href: './client/css/app.css', rel: 'stylesheet'}
+  %body{ng_app: 'notes'}
+    %nav.top-bar
+      %ul.title-area
+        %li.name
+          %h1
+            %a{href: '/'} Notes
+
+    .row
+      .large-10.columns
+        %form{ng_controller: 'notesCtrl', ng_submit: 'createNote($event)'}
+          .row
+            .large-12.columns
+              %label
+                Note
+                %textarea{ng_model: 'note'}
+              %button{type: 'submit'} Send
+      .columns.large-2
+        %ul
+          %li Note 1 [edit] [delete]
+          %li Note 2 [edit] [delete]
+          %li Note 3 [edit] [delete]
+          %li Note 4 [edit] [delete]
+          %li Note 5 [edit] [delete]
+
+    %script{type: 'text/javascript', src: './build/vendor.js'}
+    %script{type: 'text/javascript', src: './build/main.js'}
