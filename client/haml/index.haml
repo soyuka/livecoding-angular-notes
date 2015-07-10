@@ -2,31 +2,35 @@
 %html
   %head
     %title Notes
-    %meta{charset: 'utf-8'}
-    %link{href: './client/css/app.css', rel: 'stylesheet'}
-  %body{ng_app: 'notes'}
+    %meta{charset: "utf-8"}
+    %link{href: "./client/css/app.css", rel: "stylesheet"}
+  %body{"ng-app": "notes", "ng-controller": "notesCtrl"}
     %nav.top-bar
       %ul.title-area
         %li.name
           %h1
-            %a{href: '/'} Notes
-
+            %a{href: "/"} Notes
+    .row
+      .large-12.columns
+        %h2 Preview
+        %div{marked: "note.text"}
+        %hr
     .row
       .large-10.columns
-        %form{ng_controller: 'notesCtrl', ng_submit: 'createNote($event)'}
+        %form{"ng-submit": "createOrUpdate()"}
           .row
             .large-12.columns
               %label
+                Title
+                %input{"ng-model": "note.title", type: "text"}
+              %label
                 Note
-                %textarea{ng_model: 'note'}
-              %button{type: 'submit'} Send
+                %textarea{"ng-model": "note.text"}
+              %button{type: "submit"} Send
       .columns.large-2
         %ul
-          %li Note 1 [edit] [delete]
-          %li Note 2 [edit] [delete]
-          %li Note 3 [edit] [delete]
-          %li Note 4 [edit] [delete]
-          %li Note 5 [edit] [delete]
-
-    %script{type: 'text/javascript', src: './build/vendor.js'}
-    %script{type: 'text/javascript', src: './build/main.js'}
+          %li{"ng-repeat": "n in notes"}
+            %a{href: "#", "ng-click": "update(n.index)"}
+              {{n.index + ' ' + n.title}}
+    %script{src: "./build/vendor.js", type: "text/javascript"}
+    %script{src: "./build/main.js", type: "text/javascript"}

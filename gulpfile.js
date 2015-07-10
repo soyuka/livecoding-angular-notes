@@ -6,7 +6,7 @@ var rename = require('gulp-rename')
 var bower = require('main-bower-files')
 var ngannotate = require('gulp-ng-annotate')
 var uglify = require('gulp-uglify')
-var haml = require('gulp-haml')
+var haml = require('gulp-ruby-haml')
 var filter = require('gulp-filter')
 
 var paths = {
@@ -53,15 +53,15 @@ gulp.task('scripts', function() {
 
 gulp.task('haml', function() {
   return gulp.src('client/haml/index.haml')
-  .pipe(haml({compiler: 'visionmedia'}))
+  .pipe(haml())
   .pipe(gulp.dest('./'))
 })
 
-gulp.task('default', ['styles', 'bower', 'scripts'])
+gulp.task('default', ['styles', 'bower', 'scripts', 'haml'])
 
 gulp.task('watch', ['default'], function() {
   gulp.watch('./client/scss/*.scss', ['styles'])
   gulp.watch(paths.scripts, ['scripts'])
-  // gulp.watch(paths.haml, ['haml'])
+  gulp.watch(paths.haml, ['haml'])
 })
 
